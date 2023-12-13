@@ -124,8 +124,8 @@ class App extends BaseEngine {
 
         //Update preloader content
         $('#preloader .icon').remove();
-        $('#preloader .title').text('Automotive Configurator');
-        $('#preloader .desc').html('A ThreeJS based car configurator. This app is intended for demo purposes only.');
+        $('#preloader .title').text('Jio AR VR');
+        $('#preloader .desc').html('Press the button below to start the experience.');
         $('#preloader .btn-main').show();
     }
 
