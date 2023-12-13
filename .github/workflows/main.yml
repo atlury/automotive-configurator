@@ -1,9 +1,11 @@
 name: Build and Deploy
 
 on:
-  push:
-    branches:
-    - main
+  workflow_dispatch:
+#on:
+#  push:
+#    branches:
+#    - main
 
 jobs:
   build:
@@ -27,8 +29,19 @@ jobs:
           npm run build-css
           npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      #- name: Deploy to GitHub Pages
+      #  uses: JamesIves/github-pages-deploy-action@v4
+      #  with:
+      #    branch: deploy
+      #    folder: build
+      
+      # New step to zip the build folder
+      - name: Zip Build Artifacts
+        run: zip -r build.zip build/
+
+      # New step to upload the zip file as an artifact
+      - name: Upload Build Zip To Artifact
+        uses: actions/upload-artifact@v3
         with:
-          branch: deploy
-          folder: build
+          name: build-zip
+          path: build.zip  
